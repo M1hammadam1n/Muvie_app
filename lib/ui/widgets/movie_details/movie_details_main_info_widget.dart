@@ -37,7 +37,7 @@ class MovieDetailsMainInfoWidget extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.all(10.0),
-                child: _ReliesDateTvShow(),
+                child: _ReliesDateMovie(),
               ),
               Padding(
                 padding: EdgeInsets.only(left: 10, top: 10),
@@ -105,8 +105,8 @@ class MovieDetailsMainInfoWidget extends StatelessWidget {
   }
 }
 
-class _ReliesDateTvShow extends StatelessWidget {
-  const _ReliesDateTvShow({Key? key}) : super(key: key);
+class _ReliesDateMovie extends StatelessWidget {
+  const _ReliesDateMovie({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:move_app_1/domain/factoryes/scren_factoryes.dart';
-import 'package:move_app_1/ui/widgets/main_screen/main_screen_widget_cubit.dart'; 
+import 'package:move_app_1/ui/widgets/main_screen/main_screen_widget_cubit.dart';
+import 'package:move_app_1/ui/widgets/news/news_widget.dart'; 
 
 class MainScreenWidget extends StatelessWidget {
   const MainScreenWidget({Key? key}) : super(key: key);
@@ -28,14 +29,21 @@ class MainScreenWidget extends StatelessWidget {
             body: IndexedStack(
               index: selectedTab,
               children: [
+                const NewsWidget(),
                 ScreenFactory().makeMovieList(),
                 ScreenFactory().makeTvShowList(),
+              
               ],
             ),
             bottomNavigationBar: BottomNavigationBar(
               currentIndex: selectedTab,
               backgroundColor: const Color(0XFF2F2C44),
               items: const [
+                BottomNavigationBarItem(
+                  backgroundColor: Colors.white30,
+                  icon: Icon(Icons.newspaper_outlined),
+                  label: 'новости',
+                ),
                 BottomNavigationBarItem(
                   backgroundColor: Colors.white30,
                   icon: Icon(Icons.movie_creation_outlined),

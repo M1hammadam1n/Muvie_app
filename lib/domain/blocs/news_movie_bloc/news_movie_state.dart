@@ -1,19 +1,18 @@
-
 import 'package:move_app_1/domain/model_movie/movie.dart';
 
-class MovieListContainer {
+class TopMovieListContainer {
   final List<Movie> movies;
   final int currentPage;
   final int totalPage;
 
   bool get isComplete => currentPage >= totalPage;
 
-  const MovieListContainer.inital()
+  const TopMovieListContainer.inital()
       : movies = const <Movie>[],
         currentPage = 0,
         totalPage = 1;
 
-  MovieListContainer({
+  TopMovieListContainer({
     required this.movies,
     required this.currentPage,
     required this.totalPage,
@@ -22,7 +21,7 @@ class MovieListContainer {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is MovieListContainer &&
+      other is TopMovieListContainer &&
           runtimeType == other.runtimeType &&
           movies == other.movies &&
           currentPage == other.currentPage &&
@@ -32,12 +31,12 @@ class MovieListContainer {
   int get hashCode =>
       movies.hashCode ^ currentPage.hashCode ^ totalPage.hashCode;
 
-  MovieListContainer copyWith({
+  TopMovieListContainer copyWith({
     List<Movie>? movies,
     int? currentPage,
     int? totalPage,
   }) {
-    return MovieListContainer(
+    return TopMovieListContainer(
       movies: movies ?? this.movies,
       currentPage: currentPage ?? this.currentPage,
       totalPage: totalPage ?? this.totalPage,
@@ -45,23 +44,23 @@ class MovieListContainer {
   }
 }
 
-class MovieListState {
-  final MovieListContainer popularMovieContainer;
+class TopMovieListState {
+  final TopMovieListContainer popularMovieContainer;
 
   List<Movie> get movies =>
       popularMovieContainer.movies;
 
-  const MovieListState.inital()
-      : popularMovieContainer = const MovieListContainer.inital();
+  const TopMovieListState.inital()
+      : popularMovieContainer = const TopMovieListContainer.inital();
 
-  MovieListState({
+  TopMovieListState({
     required this.popularMovieContainer,
   });
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is MovieListState &&
+      other is TopMovieListState &&
           runtimeType == other.runtimeType &&
           popularMovieContainer == other.popularMovieContainer;
 
@@ -69,10 +68,10 @@ class MovieListState {
   int get hashCode =>
       popularMovieContainer.hashCode;
 
-  MovieListState copyWith({
-    MovieListContainer? popularMovieContainer,
+  TopMovieListState copyWith({
+    TopMovieListContainer? popularMovieContainer,
   }) {
-    return MovieListState(
+    return TopMovieListState(
       popularMovieContainer:
           popularMovieContainer ?? this.popularMovieContainer,
     );

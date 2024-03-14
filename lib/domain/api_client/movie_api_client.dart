@@ -12,13 +12,12 @@ class MovieApiClient {
     int page,
     String locale,
     String apiKey,
-  ) async {
+    ) async {
     PopularMovieResponse parser(dynamic json) {
       final jsonMap = json as Map<String, dynamic>;
       final response = PopularMovieResponse.fromJson(jsonMap);
       return response;
     }
-
     final result = _networkClient.get(
       '/movie/popular',
       parser,
@@ -28,7 +27,28 @@ class MovieApiClient {
         'language': locale,
       },
     );
-   
+    return result;
+  }
+
+  Future<PopularMovieResponse> topMovie(
+    int page,
+    String locale,
+    String apiKey,
+    ) async {
+    PopularMovieResponse parser(dynamic json) {
+      final jsonMap = json as Map<String, dynamic>;
+      final response = PopularMovieResponse.fromJson(jsonMap);
+      return response;
+    }
+    final result = _networkClient.get(
+      '/movie/top_rated',
+      parser,
+      <String, dynamic>{
+        'api_key': Configuration.apiKey,
+        'page': page.toString(),
+        'language': locale,
+      },
+    );
     return result;
   }
 
@@ -111,4 +131,5 @@ Future<List<Actor>?> movieDetailsCredits(
     );
     return result;
   }
+  
 }

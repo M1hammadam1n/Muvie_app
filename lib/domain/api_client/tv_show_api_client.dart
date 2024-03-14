@@ -20,6 +20,30 @@ class TvShowApiClient {
     }
 
     final result = _networkClient.get(
+      '/tv/popular',
+      parser,
+      <String, dynamic>{
+        'api_key': Configuration.apiKey,
+        'page': page.toString(),
+        'language': locale,
+      },
+    );
+
+    return result;
+  }
+
+    Future<PopularTvResponse> TopTv(
+    int page,
+    String locale,
+    String apiKey,
+  ) async {
+    PopularTvResponse parser(dynamic json) {
+      final jsonMap = json as Map<String, dynamic>;
+      final response = PopularTvResponse.fromJson(jsonMap);
+      return response;
+    }
+
+    final result = _networkClient.get(
       '/tv/top_rated',
       parser,
       <String, dynamic>{
@@ -31,6 +55,7 @@ class TvShowApiClient {
 
     return result;
   }
+
 
   Future<TvShowDetails> tvShowDetails(
     int tvShowId,

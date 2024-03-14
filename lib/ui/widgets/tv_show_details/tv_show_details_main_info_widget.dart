@@ -500,3 +500,4 @@ class ActorsWidget extends StatelessWidget {
     );
   }
 }
+
